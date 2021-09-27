@@ -1,17 +1,16 @@
 import React from 'react';
+import Name from '../Name/Name';
 import './Cart.css'
 
 const Cart = (props) => {
-    const { cart} = props;
+    const { cart } = props;
     let total = 0;
+    let newTitle = [];
     for (const place of cart) {
         total = total + place.travelCost;
+        newTitle.push(cart)
     }
 
-    let newTitle = '';
-    for (const place of cart) {
-        newTitle =newTitle + place.placeName;
-    }
 
     return (
         
@@ -23,10 +22,13 @@ const Cart = (props) => {
                 
             </div>
             <div>
-            <ul>
-                <li>{ newTitle}</li>
-            </ul>
             <button className='regular-button'>Book Now</button>
+                <div>
+                {
+                    newTitle.map(name => <Name
+                        name={name.placeName}></Name>)
+                }
+                </div>
            </div>
         </div>
     );
